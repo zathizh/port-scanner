@@ -1,0 +1,15 @@
+$ports=(125,135,139,143,144,146,161,163,179,199,427,443,444,445,458,900,901,902,903,911,912,981,987);
+$ip="192.168.0.63";
+foreach ($port in $ports){
+	try{
+		$socket=New-Object System.Net.Sockets.TcpClient($ip,$port);
+	}
+	catch{};
+	if ($socket -eq $null){
+		echo $ip ":" $port " - Closed";
+	}
+	else{
+		echo $ip ":" $port " - Open";
+		$socket = $null;
+	}
+}
